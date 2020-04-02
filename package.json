@@ -2,10 +2,9 @@
   "name": "tm-plugin_axisCamera",
   "version": "1.0.0",
   "description": "TANlockManager Axis Camera Plugin",
-  "main": "index.js",
   "repository": "git@github.com:FATH-Mechatronics/tm-plugin_axisCamera.git",
   "author": "Fath Mechatronics GmbH",
-  "license": "AGPLv3",
+  "license": "AGPL-3.0",
   "private": true,
   "dependencies": {
     "urllib": "^2.34.2"
