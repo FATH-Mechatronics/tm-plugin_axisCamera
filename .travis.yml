@@ -1,0 +1,25 @@
+language: node_js
+
+node_js:
+- lts/*
+
+script:
+- yarn install
+- zip -r tm-plugin_axisCamera.zip node_modules *.js
+
+before_deploy:
+- git config --local user.name "Travis CI"
+- git config --local user.email "build@travis-ci.org"
+- export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+- git tag $TRAVIS_TAG
+
+deploy:
+  provider: releases
+  api_key:
+    secure: fSAxbCXnnmL1SlmJgX9S/thv0Dp2qzCkgxSzKlu/J9ZSGE5CTa+G9UjBpAHf7FFW9syD2hL/sw29dIQmsWn7f2t5mZ3sB2ayD1fmYR3VwUUMJ6TcWwF10gonUevSqsbTh4PG2iIpu/UWIMQLe1gWa9ZmQpisAMQrTE8td5ZfdsW8/6nZrkXywCsp/AvHyRUjLVFLr0lgDH2iwitGU26/x/OoM6MShG/c+GTeh8jkjeBk6YBXoqh6TYeUpJlwpe5v6Ewfm32mzx/I160jrYl2MFb1ilHzktEtukZg81v4j1zzUOyun38R08fUgdq/hhknQEfxrw7VVc0yoTtef8pyQMQS9zyn7TkVY58dQSn6UzxnJJS9/mUkYPKu1TWurVOlurzday+ezlBv2+Oi7SQMCplx9AHqR0drcMZbVO2vkP7jYJxdAA74pNRMxFgBarlZxaPYBwb3KvlV2c+mLepHRfoR1X76VJlnzMaG07tSiHHkYItfbC6kPfT+hxdxW2gSUkPbQF/OeBomqhmIEiqg4UvxMg9+IWPWGe0hsbHEBuFnYdM/yudXoYSVxa8a4uxb+v4PjCYCxnE2mRoqcKQ0B9Md0nQKi/7OwFXWWN/ntdUwf1Wz4xeHXlENdhABiakX2KySEnzBj9ZzqymOdqOrjLIR/BZ0gNrqVkI0INzN+2o=
+  file: "./tm-plugin_axisCamera.zip"
+  skip_cleanup: true
+  on:
+    branch: master
+    node_js: lts/*
+    repo: FATH-Mechatronics/tm-plugin_axisCamera
