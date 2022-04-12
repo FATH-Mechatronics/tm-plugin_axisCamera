@@ -1,6 +1,6 @@
 {
   "name": "tm-plugin_axisCamera",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "axisCameraPlugin.js",
   "pluginType": "cameraPlugin",
   "description": "TANlockManager Axis Camera Plugin",
@@ -9,6 +9,6 @@
   "license": "AGPL-3.0",
   "private": true,
   "dependencies": {
-    "urllib": "^2.34.2"
+    "urllib": "^2.38.0"
   }
 }
